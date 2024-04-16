@@ -16,9 +16,15 @@
 <body>
 
   <main>
+
+    <header>
+      <div class="logo">
+        <img src="./images/logo.svg" alt="Base Apparel Logo" class="logo">
+      </div>
+    </header>
+    
     <div class="left">
-     <div class="left-column">
-      <img src="./images/logo.svg" alt="Base Apparel Logo" class="logo">
+
 
         <div class="left-content">
           <h1><span>We're</span><br>coming<br>soon</h1>
@@ -31,16 +37,15 @@
             <div class="subscription-field">
               <input type="email" id="email" name="email" placeholder="Email Address">
               <button type="submit"><img src="./images/icon-arrow.svg" alt="Arrow Icon to Send"></button>
+            </div>
 
-              <div class="error">
-                <small>Please provide a valid Email</small>
-              </div>
 
+            <div class="error">
+              <img src="./images/icon-error.svg" alt="Error Icon" class="error-img">
+              <span class="error-message">Please provide a valid Email</span>
             </div>
           </form>
 
-          <img src="./images/icon-error.svg" alt="Error Icon" class="error">
-        </div>
       </div>
     </div>
 
@@ -48,6 +53,6 @@
     <div class="right"></div>
 
   </main>
-
+  <script src="./script.js"></script>
 </body>
 </html>

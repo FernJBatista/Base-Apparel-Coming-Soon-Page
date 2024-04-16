@@ -140,67 +140,76 @@ table {
 body {
   min-height: 100vh;
   font-family: Josefin Sans;
+  background-image: url(../images/bg-pattern-desktop.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 body main {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
   margin: 0;
-  justify-content: space-around;
-}
-body main div.left {
-  padding: 4rem 0;
-  display: flex;
-  flex-direction: column;
-  background-image: url(../images/bg-pattern-desktop.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  gap: 8rem;
-  box-sizing: border-box;
-  min-width: 60%;
   position: relative;
+}
+body main header {
+  display: flex;
+  margin-left: 0;
+  z-index: 2;
+  left: 0;
+  position: absolute;
+  min-width: 60%;
   justify-content: center;
   align-items: center;
-}
-body main div.left div.left-column {
-  display: flex;
-  flex-direction: column;
-}
-body main div.left div.left-column img.logo {
-  max-width: 10rem;
-  position: absolute;
   top: 10%;
 }
-body main div.left div.left-column div.left-content {
+body main header div.logo {
+  display: inline-block;
+  min-width: 28rem;
+}
+body main header div.logo img.logo {
+  max-width: 10rem;
+}
+body main div.left {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  gap: 8rem;
+  box-sizing: border-box;
+  position: relative;
+}
+body main div.left div.left-content {
   max-width: 28rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-body main div.left div.left-column div.left-content h1 {
+body main div.left div.left-content h1 {
   font-size: 5rem;
   text-transform: uppercase;
   letter-spacing: 1rem;
   font-weight: 600;
 }
-body main div.left div.left-column div.left-content h1 span {
+body main div.left div.left-content h1 span {
   color: var(--Desaturated-Red);
   font-weight: 300;
 }
-body main div.left div.left-column div.left-content p {
+body main div.left div.left-content p {
   font-size: 1rem;
   font-weight: 400;
   color: var(--Desaturated-Red);
   line-height: 1.5;
 }
-body main div.left div.left-column div.left-content form div.subscription-field {
+body main div.left div.left-content form {
+  display: flex;
+  flex-direction: column;
+}
+body main div.left div.left-content form div.subscription-field {
   display: flex;
   flex-direction: row;
   position: relative;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
 }
-body main div.left div.left-column div.left-content form div.subscription-field input {
+body main div.left div.left-content form div.subscription-field input {
   width: 100%;
   padding: 1rem 2rem;
   border: 1px solid var(--Desaturated-Red);
@@ -209,15 +218,15 @@ body main div.left div.left-column div.left-content form div.subscription-field 
   font-weight: 400;
   color: var(--Dark-Grayish-Red);
 }
-body main div.left div.left-column div.left-content form div.subscription-field input::-moz-placeholder {
+body main div.left div.left-content form div.subscription-field input::-moz-placeholder {
   color: hsla(0, 0%, 0%, 0.3);
   font-weight: 400;
 }
-body main div.left div.left-column div.left-content form div.subscription-field input::placeholder {
+body main div.left div.left-content form div.subscription-field input::placeholder {
   color: hsla(0, 0%, 0%, 0.3);
   font-weight: 400;
 }
-body main div.left div.left-column div.left-content form div.subscription-field button {
+body main div.left div.left-content form div.subscription-field button {
   padding: 1rem 3rem;
   border-radius: 9999px;
   border: none;
@@ -227,21 +236,26 @@ body main div.left div.left-column div.left-content form div.subscription-field 
   box-shadow: 0 10px 14px hsla(0, 36%, 70%, 0.65);
   cursor: pointer;
 }
-body main div.left div.left-column div.left-content form div.subscription-field button:hover {
+body main div.left div.left-content form div.subscription-field button img {
+  aspect-ratio: 1/1;
+}
+body main div.left div.left-content form div.subscription-field button:hover {
   background: linear-gradient(135deg, hsl(0, 100%, 98%), hsl(0, 80%, 86%));
   box-shadow: 0 10px 14px hsla(0, 36%, 70%, 0.65);
 }
-body main div.left div.left-column div.left-content form div.subscription-field div.error {
-  display: none;
-  position: absolute;
-  top: 4rem;
-  left: 2rem;
+body main div.left div.left-content form div.error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   color: red;
+  gap: 0.5rem;
+  padding-left: 1.5rem;
+  visibility: hidden; /* Initially hide the error message */
 }
-body main div.left div.left-column div.left-content img.error {
-  display: none;
+body main div.left div.left-content form div.error span {
+  padding-top: 0.5rem;
 }
-body main div.right {
+body div.right {
   background-image: url(../images/hero-desktop.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -249,21 +263,64 @@ body main div.right {
 }
 
 @media screen and (max-width: 578px) {
+  body {
+    background-image: none;
+    min-width: 100vw;
+    background-color: hsl(0, 100%, 98%);
+  }
   body main {
-    flex-direction: column-reverse;
-    margin-top: 20%;
+    display: grid;
+    grid-template-rows: 6rem 240px max-content;
+    grid-template-columns: 1fr;
     align-items: center;
     justify-content: center;
   }
+  body main header {
+    display: flex;
+    grid-row: 1;
+    position: static;
+    min-width: 100%;
+    padding: 0 1rem;
+  }
+  body main header div.logo {
+    display: flex;
+    padding: 0 2rem;
+    box-sizing: border-box;
+  }
+  body main header div.logo img.logo {
+    max-width: 8rem;
+  }
   body main div.left {
+    display: grid;
+    grid-row: 3;
     padding: 2rem 1rem;
     background-image: none;
-    background-color: #fff;
     width: 100%;
+    padding: 6rem 2rem;
+    box-sizing: border-box;
+  }
+  body main div.left div.left-content {
+    min-width: 100%;
+  }
+  body main div.left div.left-content h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+  body main div.left div.left-content p {
+    text-align: center;
+  }
+  body main div.left div.left-content form div.subscription-field button {
+    padding: 1rem 2.5rem;
+    right: 40%;
+  }
+  body main div.left div.left-content form div.subscription-field button img {
+    aspect-ratio: 1/1;
   }
   body main div.right {
+    display: grid;
+    grid-row: 2;
     width: 100%;
     height: 16rem;
-    background-size: auto;
+    background-size: cover;
   }
 }
